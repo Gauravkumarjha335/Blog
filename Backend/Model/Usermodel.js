@@ -2,18 +2,19 @@ import mongoose from "mongoose";
 
 const userschema = new mongoose.Schema({
     username: {
-        require: true,
-        typeof: String,
-        unique: true
+        type: String,
+        // require: true,
+
+        // unique: true
     },
     email: {
-        typeof: String,
-        unique: true,
-        required: [true, "Please provide an Email address"]
-    },
-    password: {
         type: String,
-        require: [true, "Please Provide a Password"],
+        // unique: true,
+        // required: true
+    },
+    password : {
+        type: String,
+        // require: [true, "Please Provide a Password"],
     },
 
 
@@ -22,4 +23,6 @@ const userschema = new mongoose.Schema({
 
 const User = mongoose.model( 'User', userschema );
 
-module.exports = User; 
+export default User;
+
+// module.exports = User; 
