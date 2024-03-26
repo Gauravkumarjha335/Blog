@@ -5,15 +5,17 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "nodemon server.js"
   },
   "author": "gaurav",
   "license": "ISC",
   "dependencies": {
     "env": "^0.0.2",
-    "express": "^4.19.1",
+    "express": "^4.19.2",
     "mongodb": "^6.5.0",
-    "mongoose": "^8.2.3",
+    "mongoose": "^8.2.3"
+  },
+  "devDependencies": {
     "nodemon": "^3.1.0"
   }
 }
