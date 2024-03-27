@@ -1,12 +1,14 @@
 import User from '../Model/Usermodel.js'
 import bcryptjs from 'bcryptjs'
+import { errorHandler } from '../Utills/Error.js';
 
 
-export const Signup = async (req, res) => {
-    const { username, password, email } = req.body;
+export const Signup = async (req, res, next) => {
+
+    const { username, email, password } = req.body;
+
     if (!username || !password || !email || username === '' || password === '', email === '') {
-        return res.status(400).json({ message: "All filled are required " })
-
+        next(errorHandler(400, 'All filedes are required'))
     }
 
     const hashedpassword = bcryptjs.hashSync(password, 10);
@@ -14,9 +16,14 @@ export const Signup = async (req, res) => {
     const newuser = new User({
         username,
         email,
-        password : hashedpassword,
+        password: hashedpassword,
     });
 
-    await newuser.save()
-    res.json("Account has been created");
+    try {
+        await newuser.save()
+        res.json("Account has been created");
+    } catch (error) {
+        next(error);
+    }
+
 }

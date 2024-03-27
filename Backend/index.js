@@ -11,6 +11,16 @@ app.listen(PORT, () => console.log(`Server is running on ${PORT}`));
 
 connectDB();
 app.use(express.json());
-app.use('/api/user' , userRoutes);
-app.use('/api/auth' , authroutes);
+app.use('/api/user', userRoutes);
+app.use('/api/auth', authroutes);
+
+app.use((err, req, res, next) => {
+    const statuscode = err.statuscode || 500;
+    const message = err.statuscode || 'Internal Server Error';
+    res.status(statuscode).json({
+        success: false,
+        statuscode,
+        message
+    })
+})
 
