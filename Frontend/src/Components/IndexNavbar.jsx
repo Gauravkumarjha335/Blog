@@ -3,8 +3,10 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
-function NavScrollExample() {
+
+function IndexNavbar() {
     return (
         <Navbar bg="dark" expand="lg" variant="dark">
             <Container fluid>
@@ -32,13 +34,15 @@ function NavScrollExample() {
                     </Form>
                 </Nav>
                 <Form style={{ display: "flex", gap: '20px' }} >
+                    <Link to='/sign-in'><Button className='ml-4' variant="outline-success">Sign-in</Button></Link>
+                    <Link to='/sign-up'><Button className='ml-14' variant="outline-success">Sign-up</Button></Link>
 
-                    <Button className='ml-14' variant="outline-success">Login</Button>
-                    <Button className='ml-4' variant="outline-success">Signup</Button>
+
+
                 </Form>
             </Container>
         </Navbar>
     );
 }
 
-export default NavScrollExample;
+export default IndexNavbar;
