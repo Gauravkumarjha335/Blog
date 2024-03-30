@@ -8,19 +8,20 @@ function Home() {
     const [formdata, setformdata] = useState({})
     const handlechange = (e) => {
         setformdata({ ...formdata, [e.target.id]: e.target.value });
+        console.log(formdata);
+
     };
 
 
-    const submitdata = (e) => {
+    const submitdata = async (e) => {
         e.preventDefault();
         try {
-            fetch('http://localhost:8000/api/auth/signup', {
+            const res = await fetch('/api/auth/signup', {
                 method: 'POST',
-                headers: {
-                    "Content-Type": 'application/json'
-                },
-                body: JSON.stringify(formdata)
-            })
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formdata),
+            });
+            const data = await res.json();
 
 
         } catch (error) {
