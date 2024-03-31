@@ -3,7 +3,7 @@ import { Container, Row, Col, Alert, Spinner } from 'reactstrap'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
-import IndexNavbar from '../Components/IndexNavbar'
+// import IndexNavbar from '../Components/IndexNavbar'
 import { Link, useNavigate } from 'react-router-dom';
 
 function SignIn() {
@@ -50,7 +50,7 @@ function SignIn() {
 
   return (
     <>
-      <IndexNavbar />
+      {/* <IndexNavbar /> */}
       <Container className='homepage' >
         <Row>
           <Col md='6' style={{ boxSizing: 'border-box', display: 'flex', flexFlow: 'column', justifyContent: 'center', alignItems: 'center', height: '70vh' }} >
@@ -61,9 +61,7 @@ function SignIn() {
 
             <Form onSubmit={submitdata} >
 
-              <Form.Label>Enter your name</Form.Label>
-              <Form.Control type="text" id='username' name='username' placeholder="Enter Name" onChange={handlechange} />
-
+            
               <Form.Label>Email address</Form.Label>
               <Form.Control type="text" id='email' name='email' placeholder="Enter email" onChange={handlechange} />
 
@@ -72,6 +70,7 @@ function SignIn() {
 
               <Button variant="primary" type="submit" style={{ marginTop: '20px' }} disabled={loading} >
                 {
+                  
                   loading ? (
                     <>
                       <Spinner size='sm' />

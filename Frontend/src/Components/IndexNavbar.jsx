@@ -10,15 +10,18 @@ function IndexNavbar() {
     return (
         <Navbar bg="dark" expand="lg" variant="dark">
             <Container fluid>
-                <Navbar.Brand to="#" style={{ marginLeft: '70px' }} >Gaurav'blog</Navbar.Brand>
+                <Link to='/'><Navbar.Brand to="#" style={{ marginLeft: '70px' }} >Gaurav'blog</Navbar.Brand>
+                </Link>
                 <Nav
                     className="me-auto my-12 my-lg-1 pl-5"
                     style={{ maxHeight: '100px', display: 'flex', gap: '25px' }}
                     navbarScroll
                 >
-                    <Nav.Link className='ml-5' style={{ marginLeft: '30px' }} to="/1">Home</Nav.Link>
-                    <Nav.Link className='ml-5' to="/2">About</Nav.Link>
-                    <Nav.Link className='ml-5' to="/1">Contact</Nav.Link>
+                    <Link to='/' ><Nav className='ml-5' style={{ marginLeft: '30px' }} >Home</Nav></Link>
+
+                    <Link to="/about" ><Nav className='ml-5' >About</Nav></Link>
+                    <Link to='contact' ><Nav className='ml-5'>Contact</Nav>
+                    </Link>
 
 
                     <Form className="d-flex ml-10">

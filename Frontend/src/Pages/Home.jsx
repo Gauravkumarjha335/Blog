@@ -1,14 +1,15 @@
 import React from 'react'
-import IndexNavbar from '../Components/IndexNavbar'
 
 
 function Home() {
-   
+
     return (
         <>
-            <IndexNavbar />
+            <div style={{ display: 'flex', justifyContent: 'center' , alignItems : 'center' , height : '80vh' }} >
+                <h1>Gaurav's Blog</h1>
 
-         
+            </div>
+
 
         </>
     )
