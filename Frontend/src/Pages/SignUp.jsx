@@ -6,7 +6,7 @@ import { useState } from 'react';
 // import IndexNavbar from '../Components/IndexNavbar'
 import { Link, useNavigate } from 'react-router-dom';
 
-function SignIn() {
+function SignUp() {
   const [errorMessage, setErrorMessage] = useState(null);
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -57,7 +57,7 @@ function SignIn() {
             <h1>Welcome</h1>
             <h2>in gaurav's blog</h2>
           </Col>
-          <Col md='6' style={{ boxSizing: 'border-box', display: 'flex', flexFlow: 'column', justifyContent: 'center', alignItems: 'center', height: '70vh' }}   >
+          <Col md='6' style={{  boxSizing: 'border-box', display: 'flex', flexFlow: 'column', justifyContent: 'center', height: '85vh' , width  : '25vw' , marginLeft : '80px'}}   >
 
             <Form onSubmit={submitdata} >
 
@@ -70,9 +70,9 @@ function SignIn() {
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" id='password' name='password' placeholder="Password" onChange={handlechange} />
 
-              <Button variant="primary" type="submit" style={{ marginTop: '20px' }} disabled={loading} >
+              <Button variant="primary" type="submit" style={{ marginTop: '20px' , width : '100%' }} disabled={loading} >
                 {
-                  
+
                   loading ? (
                     <>
                       <Spinner size='sm' />
@@ -84,6 +84,9 @@ function SignIn() {
                   )
                 }
               </Button>
+              <Button style={{width : '100%' , marginTop  : '15px'}} >Countinue with Google</Button>
+
+              <p style={{marginTop : '15px'}} >Have an account? <Link to='sign-up' >Sign Up</Link></p>
             </Form>
             {
               errorMessage && (
@@ -97,4 +100,4 @@ function SignIn() {
   )
 }
 
-export default SignIn
+export default SignUp

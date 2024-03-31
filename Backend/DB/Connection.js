@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
-const mongourl = "mongodb+srv://Gaurav:Gaurav@atlascluster.bfkgaz9.mongodb.net/Blog?retryWrites=true&w=majority&appName=AtlasCluster" 
+
 async function connectDB() {
     try {
 
-        mongoose.connect(mongourl)
+        mongoose.connect(process.env.MONGO_URL)
             .then(() => console.log('Connected to Database'))
         // .catch((err) => console.error(err));
     } catch {

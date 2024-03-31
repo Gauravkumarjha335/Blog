@@ -18,13 +18,13 @@ function SignIn() {
 
   const submitdata = async (e) => {
     e.preventDefault();
-    if (!formdata.username || !formdata.email || !formdata.password) {
+    if (!formdata.email || !formdata.password) {
       return setErrorMessage('Please fill out all fields.');
     }
     try {
       setLoading(true);
       setErrorMessage(null);
-      const res = await fetch('/api/auth/signup', {
+      const res = await fetch('/api/auth/signin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formdata)
@@ -36,12 +36,11 @@ function SignIn() {
       }
       setLoading(false);
       if (res.ok) {
-        navigate('/sign-in');
+        navigate('/');
       }
-      // console.log(res)
-      // alert("Data Sumited")
       setLoading(false);
-    } catch (error) {
+    } 
+    catch (error) {
       setErrorMessage(error.message);
       setLoading(false);
     }
@@ -57,20 +56,20 @@ function SignIn() {
             <h1>Welcome</h1>
             <h2>in gaurav's blog</h2>
           </Col>
-          <Col md='6' style={{ boxSizing: 'border-box', display: 'flex', flexFlow: 'column', justifyContent: 'center', alignItems: 'center', height: '70vh' }}   >
+          <Col md='6' style={{ boxSizing: 'border-box', display: 'flex', flexFlow: 'column', justifyContent: 'center', height: '85vh' , width  : '25vw' , marginLeft : '80px'}}   >
 
             <Form onSubmit={submitdata} >
 
-            
+
               <Form.Label>Email address</Form.Label>
               <Form.Control type="text" id='email' name='email' placeholder="Enter email" onChange={handlechange} />
 
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" id='password' name='password' placeholder="Password" onChange={handlechange} />
 
-              <Button variant="primary" type="submit" style={{ marginTop: '20px' }} disabled={loading} >
+              <Button variant="primary" type="submit" style={{ marginTop: '20px' , width : '100%' }} disabled={loading} >
                 {
-                  
+
                   loading ? (
                     <>
                       <Spinner size='sm' />
@@ -78,10 +77,13 @@ function SignIn() {
                     </>
 
                   ) : (
-                    'Signup'
+                    'Sign in'
                   )
                 }
               </Button>
+              <Button style={{width : '100%' , marginTop  : '15px'}} >Countinue with Google</Button>
+
+              <p style={{marginTop : '15px'}} >Don't Have an account? <Link to='sign-up' >Sign in</Link></p>
             </Form>
             {
               errorMessage && (

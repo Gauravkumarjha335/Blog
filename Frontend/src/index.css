@@ -1,4 +1,14 @@
-body{
+body {
     background-color: rgb(105, 107, 107);
     color: white;
+}
+
+.ml-5 {
+    list-style: none;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
 }

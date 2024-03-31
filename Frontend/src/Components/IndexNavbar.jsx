@@ -19,8 +19,8 @@ function IndexNavbar() {
                 >
                     <Link to='/' ><Nav className='ml-5' style={{ marginLeft: '30px' }} >Home</Nav></Link>
 
-                    <Link to="/about" ><Nav className='ml-5' >About</Nav></Link>
-                    <Link to='contact' ><Nav className='ml-5'>Contact</Nav>
+                    <Link to="/about"><Nav className='ml-5' >About</Nav></Link>
+                    <Link to='contact'><Nav className='ml-5'>Contact</Nav>
                     </Link>
 
 

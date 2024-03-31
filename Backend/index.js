@@ -2,11 +2,11 @@ import express from 'express'
 import connectDB from './DB/Connection.js';
 import userRoutes from './routes/userRoutes.js';
 import authroutes from './Routes/Authroutes.js'
-
-const PORT = 8000;
+import dotenv from 'dotenv';
+dotenv.config();
 const app = express();
 
-app.listen(PORT, () => console.log(`Server is running on ${PORT}`));
+app.listen(process.env.PORT, () => console.log(`Server is running on ${process.env.PORT}`));
 // Connect to MongoDB database
 
 connectDB();
