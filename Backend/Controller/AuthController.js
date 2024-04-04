@@ -4,10 +4,6 @@ import { errorHandler } from '../Utills/Error.js';
 import jwt from 'jsonwebtoken';
 
 
-
-// const dotenv = require('dotenv');
-// dotenv.config();
-
 export const Signup = async (req, res, next) => {
 
     const { username, email, password } = req.body;

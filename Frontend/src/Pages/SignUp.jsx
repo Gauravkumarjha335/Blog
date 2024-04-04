@@ -11,14 +11,15 @@ function SignUp() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const [formdata, setformdata] = useState({})
-  const handlechange = (e) => {
-    setformdata({ ...formdata, [e.target.id]: e.target.value.trim() });
+  const [formData, setFormData] = useState({});
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value.trim() });
   };
 
   const submitdata = async (e) => {
     e.preventDefault();
-    if (!formdata.username || !formdata.email || !formdata.password) {
+    if (!formData.username || !formData.email || !formData.password) {
       return setErrorMessage('Please fill out all fields.');
     }
     try {
@@ -27,9 +28,8 @@ function SignUp() {
       const res = await fetch('/api/auth/signup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formdata)
+        body: JSON.stringify(formData),
       });
-
       const data = await res.json();
       if (data.success === false) {
         return setErrorMessage(data.message);
@@ -38,9 +38,6 @@ function SignUp() {
       if (res.ok) {
         navigate('/sign-in');
       }
-      // console.log(res)
-      // alert("Data Sumited")
-      setLoading(false);
     } catch (error) {
       setErrorMessage(error.message);
       setLoading(false);
@@ -57,20 +54,20 @@ function SignUp() {
             <h1>Welcome</h1>
             <h2>in gaurav's blog</h2>
           </Col>
-          <Col md='6' style={{  boxSizing: 'border-box', display: 'flex', flexFlow: 'column', justifyContent: 'center', height: '85vh' , width  : '25vw' , marginLeft : '80px'}}   >
+          <Col md='6' style={{ boxSizing: 'border-box', display: 'flex', flexFlow: 'column', justifyContent: 'center', height: '85vh', width: '25vw', marginLeft: '80px' }}   >
 
             <Form onSubmit={submitdata} >
 
               <Form.Label>Enter your name</Form.Label>
-              <Form.Control type="text" id='username' name='username' placeholder="Enter Name" onChange={handlechange} />
+              <Form.Control type="text" id='username' name='username' placeholder="Enter Name" onChange={handleChange} />
 
               <Form.Label>Email address</Form.Label>
-              <Form.Control type="text" id='email' name='email' placeholder="Enter email" onChange={handlechange} />
+              <Form.Control type="text" id='email' name='email' placeholder="Enter email" onChange={handleChange} />
 
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" id='password' name='password' placeholder="Password" onChange={handlechange} />
+              <Form.Control type="password" id='password' name='password' placeholder="Password" onChange={handleChange} />
 
-              <Button variant="primary" type="submit" style={{ marginTop: '20px' , width : '100%' }} disabled={loading} >
+              <Button variant="primary" type="submit" style={{ marginTop: '20px', width: '100%' }} disabled={loading} >
                 {
 
                   loading ? (
@@ -84,9 +81,9 @@ function SignUp() {
                   )
                 }
               </Button>
-              <Button style={{width : '100%' , marginTop  : '15px'}} >Countinue with Google</Button>
+              <Button style={{ width: '100%', marginTop: '15px' }} >Countinue with Google</Button>
 
-              <p style={{marginTop : '15px'}} >Have an account? <Link to='sign-up' >Sign Up</Link></p>
+              <p style={{ marginTop: '15px' }} >Have an account? <Link to='sign-up' >Sign Up</Link></p>
             </Form>
             {
               errorMessage && (

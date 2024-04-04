@@ -15,12 +15,12 @@ app.use('/api/user', userRoutes);
 app.use('/api/auth', authroutes);
 
 app.use((err, req, res, next) => {
-    const statuscode = err.statuscode || 500;
-    const message = err.statuscode || 'Internal Server Error';
-    res.status(statuscode).json({
+    const statusCode = err.statusCode || 500;
+    const message = err.message || 'Internal Server Error';
+    res.status(statusCode).json({
         success: false,
-        statuscode,
-        message
-    })
-})
+        statusCode,
+        message,
+    });
+});
 

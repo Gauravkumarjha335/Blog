@@ -3,14 +3,14 @@ import { Container, Row, Col, Alert, Spinner } from 'reactstrap'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
-// import IndexNavbar from '../Components/IndexNavbar'
 import { Link, useNavigate } from 'react-router-dom';
-
+import { useDispatch , useSelector} from 'react-redux'
+import { signInStart, signInFailure, signInSuccess } from '../Redux/User/Userslice';
 function SignIn() {
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
 
+  const {loading , error : errorMessage} = useSelector(state => state.user)
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [formdata, setformdata] = useState({})
   const handlechange = (e) => {
     setformdata({ ...formdata, [e.target.id]: e.target.value.trim() });
@@ -19,11 +19,10 @@ function SignIn() {
   const submitdata = async (e) => {
     e.preventDefault();
     if (!formdata.email || !formdata.password) {
-      return setErrorMessage('Please fill out all fields.');
+      return dispatch(signInFailure("Plleeme fill"))
     }
     try {
-      setLoading(true);
-      setErrorMessage(null);
+      dispatch(signInStart());
       const res = await fetch('/api/auth/signin', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -32,17 +31,17 @@ function SignIn() {
 
       const data = await res.json();
       if (data.success === false) {
-        return setErrorMessage(data.message);
+        dispatch(signInFailure(data.message));
       }
-      setLoading(false);
       if (res.ok) {
+        dispatch(signInSuccess(data))
         navigate('/');
       }
-      setLoading(false);
-    } 
+    }
+
     catch (error) {
-      setErrorMessage(error.message);
-      setLoading(false);
+      dispatch(signInFailure(error.message))
+
     }
   };
 
@@ -56,7 +55,7 @@ function SignIn() {
             <h1>Welcome</h1>
             <h2>in gaurav's blog</h2>
           </Col>
-          <Col md='6' style={{ boxSizing: 'border-box', display: 'flex', flexFlow: 'column', justifyContent: 'center', height: '85vh' , width  : '25vw' , marginLeft : '80px'}}   >
+          <Col md='6' style={{ boxSizing: 'border-box', display: 'flex', flexFlow: 'column', justifyContent: 'center', height: '85vh', width: '25vw', marginLeft: '80px' }}   >
 
             <Form onSubmit={submitdata} >
 
@@ -67,7 +66,7 @@ function SignIn() {
               <Form.Label>Password</Form.Label>
               <Form.Control type="password" id='password' name='password' placeholder="Password" onChange={handlechange} />
 
-              <Button variant="primary" type="submit" style={{ marginTop: '20px' , width : '100%' }} disabled={loading} >
+              <Button variant="primary" type="submit" style={{ marginTop: '20px', width: '100%' }} disabled={loading} >
                 {
 
                   loading ? (
@@ -81,9 +80,9 @@ function SignIn() {
                   )
                 }
               </Button>
-              <Button style={{width : '100%' , marginTop  : '15px'}} >Countinue with Google</Button>
+              <Button style={{ width: '100%', marginTop: '15px' }} >Countinue with Google</Button>
 
-              <p style={{marginTop : '15px'}} >Don't Have an account? <Link to='sign-up' >Sign in</Link></p>
+              <p style={{ marginTop: '15px' }} >Don't Have an account? <Link to='sign-up' >Sign in</Link></p>
             </Form>
             {
               errorMessage && (

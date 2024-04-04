@@ -40,8 +40,6 @@ function IndexNavbar() {
                     <Link to='/sign-in'><Button className='ml-4' variant="outline-success">Sign-in</Button></Link>
                     <Link to='/sign-up'><Button className='ml-14' variant="outline-success">Sign-up</Button></Link>
 
-
-
                 </Form>
             </Container>
         </Navbar>
