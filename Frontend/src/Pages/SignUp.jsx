@@ -51,7 +51,7 @@ function SignUp() {
         <Row>
           <Col md='6' style={{ boxSizing: 'border-box', display: 'flex', flexFlow: 'column', justifyContent: 'center', alignItems: 'center', height: '70vh' }} >
             <h1>Welcome</h1>
-            <h2>in gaurav's blog</h2>
+            <h2>in gaurav&lsquo;s blog</h2>
           </Col>
           <Col md='6' style={{ boxSizing: 'border-box', display: 'flex', flexFlow: 'column', justifyContent: 'center', height: '85vh', width: '25vw', marginLeft: '80px' }}   >
 
@@ -80,7 +80,7 @@ function SignUp() {
               </Button>
               <Button style={{ width: '100%', marginTop: '15px' }} >Countinue with Google</Button>
 
-              <p style={{ marginTop: '15px' }} >Have an account? <Link to='/sign-in'>Sign Up</Link></p>
+              <p style={{ marginTop: '15px' }} >Have an account? <Link to='/sign-in'>Sign in</Link></p>
             </Form>
             {
               errorMessage && (

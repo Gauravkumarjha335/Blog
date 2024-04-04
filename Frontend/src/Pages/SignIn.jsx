@@ -52,7 +52,7 @@ export default function SignIn() {
         <Row>
           <Col md='6' style={{ boxSizing: 'border-box', display: 'flex', flexFlow: 'column', justifyContent: 'center', alignItems: 'center', height: '70vh' }} >
             <h1>Welcome</h1>
-            <h2>in gaurav's blog</h2>
+            <h2>in gaurav&lsquo;s blog</h2>
           </Col>
           <Col md='6' style={{ boxSizing: 'border-box', display: 'flex', flexFlow: 'column', justifyContent: 'center', height: '85vh', width: '25vw', marginLeft: '80px' }}   >
 
@@ -77,7 +77,7 @@ export default function SignIn() {
               </Button>
               <Button style={{ width: '100%', marginTop: '15px' }} >Countinue with Google</Button>
 
-              <p style={{ marginTop: '15px' }} > Have an account? <Link to='/sign-up' >Sign in</Link></p>
+              <p style={{ marginTop: '15px' }} > Have an account? <Link to='/sign-up' >Sign Up</Link></p>
             </Form>
             {
               errorMessage && (
