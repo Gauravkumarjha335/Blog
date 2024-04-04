@@ -1,4 +1,3 @@
-import React from 'react'
 import { Container, Row, Col, Alert, Spinner } from 'reactstrap'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -68,9 +67,7 @@ function SignUp() {
               <Form.Control type="password" id='password' name='password' placeholder="Password" onChange={handleChange} />
 
               <Button variant="primary" type="submit" style={{ marginTop: '20px', width: '100%' }} disabled={loading} >
-                {
-
-                  loading ? (
+                {loading ? (
                     <>
                       <Spinner size='sm' />
                       <span>Loading</span>
@@ -83,7 +80,7 @@ function SignUp() {
               </Button>
               <Button style={{ width: '100%', marginTop: '15px' }} >Countinue with Google</Button>
 
-              <p style={{ marginTop: '15px' }} >Have an account? <Link to='sign-up' >Sign Up</Link></p>
+              <p style={{ marginTop: '15px' }} >Have an account? <Link to='/sign-in'>Sign Up</Link></p>
             </Form>
             {
               errorMessage && (

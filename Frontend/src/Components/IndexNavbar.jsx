@@ -13,14 +13,14 @@ function IndexNavbar() {
                 <Link to='/'><Navbar.Brand to="#" style={{ marginLeft: '70px' }} >Gaurav'blog</Navbar.Brand>
                 </Link>
                 <Nav
-                    className="me-auto my-12 my-lg-1 pl-5"
-                    style={{ maxHeight: '100px', display: 'flex', gap: '25px' }}
+                    className="me-auto"
+                    style={{ maxHeight: '100px', display: 'flex', gap: '35px', alignItems : 'center' }}
                     navbarScroll
                 >
                     <Link to='/' ><Nav className='ml-5' style={{ marginLeft: '30px' }} >Home</Nav></Link>
 
                     <Link to="/about"><Nav className='ml-5' >About</Nav></Link>
-                    <Link to='contact'><Nav className='ml-5'>Contact</Nav>
+                    <Link to='contact'><Nav className='ml-5'>Contact</Nav>  
                     </Link>
 
 
