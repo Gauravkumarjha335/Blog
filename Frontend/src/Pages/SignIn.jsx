@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 import { signInStart, signInFailure, signInSuccess } from '../Redux/User/Userslice';
-
+import QAuth from '../Components/QAuth';
 export default function SignIn() {
   // const [loading, setLoading] = useState(false);
   const { loading, error: errorMessage } = useSelector((state) => state.user);
@@ -75,7 +75,7 @@ export default function SignIn() {
                 )
                 }
               </Button>
-              <Button style={{ width: '100%', marginTop: '15px' }} >Countinue with Google</Button>
+              <QAuth />
 
               <p style={{ marginTop: '15px' }} > Have an account? <Link to='/sign-up' >Sign Up</Link></p>
             </Form>

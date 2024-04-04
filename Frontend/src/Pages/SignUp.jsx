@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
 // import IndexNavbar from '../Components/IndexNavbar'
 import { Link, useNavigate } from 'react-router-dom';
+import QAuth from '../Components/QAuth';
 
 function SignUp() {
   const [errorMessage, setErrorMessage] = useState(null);
@@ -78,7 +79,7 @@ function SignUp() {
                   )
                 }
               </Button>
-              <Button style={{ width: '100%', marginTop: '15px' }} >Countinue with Google</Button>
+             <QAuth/>
 
               <p style={{ marginTop: '15px' }} >Have an account? <Link to='/sign-in'>Sign in</Link></p>
             </Form>
