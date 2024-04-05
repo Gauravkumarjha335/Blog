@@ -1,12 +1,23 @@
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
+import {
+    Dropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem,
+
+  } from 'reactstrap';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-
-
+import { useSelector } from 'react-redux'
+import Avator from 'react-icons'
 function IndexNavbar() {
+    const path = useLocation().pathname;
+    const navigate = useNavigate();
+    const { currentUser } = useSelector(state => state.user)
+    console.log(currentUser)
     return (
         <Navbar bg="dark" expand="lg" variant="dark">
             <Container fluid>
@@ -14,13 +25,13 @@ function IndexNavbar() {
                 </Link>
                 <Nav
                     className="me-auto"
-                    style={{ maxHeight: '100px', display: 'flex', gap: '35px', alignItems : 'center' }}
+                    style={{ maxHeight: '100px', display: 'flex', gap: '35px', alignItems: 'center' }}
                     navbarScroll
                 >
                     <Link to='/' ><Nav className='ml-5' style={{ marginLeft: '30px' }} >Home</Nav></Link>
 
                     <Link to="/about"><Nav className='ml-5' >About</Nav></Link>
-                    <Link to='contact'><Nav className='ml-5'>Contact</Nav>  
+                    <Link to='contact'><Nav className='ml-5'>Contact</Nav>
                     </Link>
 
 
@@ -37,12 +48,31 @@ function IndexNavbar() {
                     </Form>
                 </Nav>
                 <Form style={{ display: "flex", gap: '20px' }} >
-                    <Link to='/sign-in'><Button className='ml-4' variant="outline-success">Sign-in</Button></Link>
-                    <Link to='/sign-up'><Button className='ml-14' variant="outline-success">Sign-up</Button></Link>
+                    {currentUser ? (
+
+                        <Dropdown >
+                            <DropdownToggle caret size="md"  >
+                                <Avator/>
+                                Large Button
+                            </DropdownToggle>
+                            <DropdownMenu>
+                                <DropdownItem >Header</DropdownItem>
+                                <DropdownItem>Action</DropdownItem>
+                            </DropdownMenu>
+                        </Dropdown>
+                    ) : (
+
+                        <Link to='/sign-in'>
+                            <Button className='ml-4' variant="outline-success">Sign-in</Button>
+                        </Link>
+
+                    )
+                    }
+
 
                 </Form>
-            </Container>
-        </Navbar>
+            </Container >
+        </Navbar >
     );
 }
 

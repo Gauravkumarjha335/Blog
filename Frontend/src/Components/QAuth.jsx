@@ -1,11 +1,11 @@
-import React from 'react'
+
 import { Button } from 'reactstrap'
 import { AiFillGoogleCircle } from 'react-icons/ai';
 import { GoogleAuthProvider, signInWithPopup, getAuth } from 'firebase/auth'
 import { app } from '../../Firebase';
 import { useDispatch } from 'react-redux';
 import { signInSuccess } from '../Redux/User/Userslice';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 export default function QAuth() {
 
     const auth = getAuth(app)
