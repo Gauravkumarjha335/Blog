@@ -1,22 +1,19 @@
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
-import {
-    Dropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem,
-
-  } from 'reactstrap';
+import { Dropdown, Avatar, DropdownItem, DropdownDivider } from 'flowbite-react'
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux'
-import Avator from 'react-icons'
+import { Profiler } from 'react';
+// import Avator from 'react-icons'
 function IndexNavbar() {
     const path = useLocation().pathname;
     const navigate = useNavigate();
     const { currentUser } = useSelector(state => state.user)
+    // console.log(currentUser.email)
+    // console.log(currentUser.profilePicture)
     console.log(currentUser)
     return (
         <Navbar bg="dark" expand="lg" variant="dark">
@@ -47,33 +44,49 @@ function IndexNavbar() {
 
                     </Form>
                 </Nav>
-                <Form style={{ display: "flex", gap: '20px' }} >
-                    {currentUser ? (
+                {/* <Form style={{ display: "flex", gap: '20px' }} > */}
+                {currentUser ? (
 
-                        <Dropdown >
-                            <DropdownToggle caret size="md"  >
-                                <Avator/>
-                                Large Button
-                            </DropdownToggle>
-                            <DropdownMenu>
-                                <DropdownItem >Header</DropdownItem>
-                                <DropdownItem>Action</DropdownItem>
-                            </DropdownMenu>
-                        </Dropdown>
-                    ) : (
+                    <Dropdown
+                        arrowIcon={false}
+                        inline
+                        label={
+                            <Avatar
+                                alt='user'
+                                img={currentUser.profilePicture}
+                                rounded
 
-                        <Link to='/sign-in'>
-                            <Button className='ml-4' variant="outline-success">Sign-in</Button>
+                            />
+                        }
+
+                    >
+                        <Dropdown.Header>
+                            <span className='block'>{currentUser.username}</span>
+                            <span className='block'>{currentUser.email}</span>
+                        </Dropdown.Header>
+                        <Link to='/dashbord?tab=profile' >
+                            <DropdownItem>
+                                Profile
+                            </DropdownItem>
+                            <DropdownDivider></DropdownDivider>
+                            <DropdownItem>
+                                Sign Out
+                            </DropdownItem>
                         </Link>
+                    </Dropdown>
+                ) : (
 
-                    )
-                    }
+                    <Link to='/sign-in'>
+                        <Button className='ml-4' variant="outline-success">Sign-in</Button>
+                    </Link>
+
+                )
+                }
 
 
-                </Form>
+                {/* </Form> */}
             </Container >
         </Navbar >
     );
 }
-
 export default IndexNavbar;

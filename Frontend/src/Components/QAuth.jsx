@@ -22,7 +22,7 @@ export default function QAuth() {
                 body: JSON.stringify({
                     name: resultfromgoogle.user.displayName,
                     email: resultfromgoogle.user.email,
-                    googlePhoto: resultfromgoogle.user.photoURL,
+                    googlePhotoUrl: resultfromgoogle.user.photoURL,
                 }),
             })
             const data = await res.json()
