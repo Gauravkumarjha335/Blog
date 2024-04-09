@@ -37,7 +37,7 @@ export default function QAuth() {
     }
     return (
         <>
-            <Button style={{ width: '100%', marginTop: '20px', color: 'white' }} type='button' onClick={handlegoogleclick} >
+            <Button style={{ width: '100%', marginTop: '20px', color: 'white' , display : 'flex' , justifyContent : 'center', backgroundColor : 'black' }} type='button' onClick={handlegoogleclick} >
                 <AiFillGoogleCircle className='looginwithgooglebtn' />
                 Login with google</Button>
         </>

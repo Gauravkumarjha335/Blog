@@ -5,16 +5,19 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { Profiler } from 'react';
+import nightmode from '../assets/nightmode.png'
+import { toggleTheme } from '../Redux/Thems/Themslice';
 // import Avator from 'react-icons'
 function IndexNavbar() {
     const path = useLocation().pathname;
     const navigate = useNavigate();
+    const disptch = useDispatch();
     const { currentUser } = useSelector(state => state.user)
     // console.log(currentUser.email)
     // console.log(currentUser.profilePicture)
-    console.log(currentUser)
+    // console.log(currentUser)
     return (
         <Navbar bg="dark" expand="lg" variant="dark">
             <Container fluid>
@@ -31,7 +34,6 @@ function IndexNavbar() {
                     <Link to='contact'><Nav className='ml-5'>Contact</Nav>
                     </Link>
 
-
                     <Form className="d-flex ml-10">
                         <Form.Control
                             type="search"
@@ -45,6 +47,8 @@ function IndexNavbar() {
                     </Form>
                 </Nav>
                 {/* <Form style={{ display: "flex", gap: '20px' }} > */}
+                <Button onClick={()=>{disptch(toggleTheme())}} style={{ width: '50px', marginRight: '15px', backgroundColor: 'currentColor' }} ><img src={nightmode} alt="" /></Button>
+
                 {currentUser ? (
 
                     <Dropdown

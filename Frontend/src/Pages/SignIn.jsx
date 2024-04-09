@@ -50,8 +50,8 @@ export default function SignIn() {
       {/* <IndexNavbar /> */}
       <Container className='homepage' >
         <Row>
-          <Col md='6' style={{ boxSizing: 'border-box', display: 'flex', flexFlow: 'column', justifyContent: 'center', alignItems: 'center', height: '70vh' }} >
-            <h1>Welcome</h1>
+          <Col md='6' style={{ fontSize : '45px', boxSizing: 'border-box', display: 'flex', flexFlow: 'column', justifyContent: 'center', alignItems: 'center', height: '70vh' }} >
+            <h1 >Welcome</h1>
             <h2>in gaurav&lsquo;s blog</h2>
           </Col>
           <Col md='6' style={{ boxSizing: 'border-box', display: 'flex', flexFlow: 'column', justifyContent: 'center', height: '85vh', width: '25vw', marginLeft: '80px' }}   >
