@@ -11,6 +11,7 @@ import nightmode from '../assets/nightmode.png'
 import { toggleTheme } from '../Redux/Thems/Themslice';
 // import Avator from 'react-icons'
 function IndexNavbar() {
+    
     const path = useLocation().pathname;
     const navigate = useNavigate();
     const disptch = useDispatch();
@@ -47,7 +48,7 @@ function IndexNavbar() {
                     </Form>
                 </Nav>
                 {/* <Form style={{ display: "flex", gap: '20px' }} > */}
-                <Button onClick={()=>{disptch(toggleTheme())}} style={{ width: '50px', marginRight: '15px', backgroundColor: 'currentColor' }} ><img src={nightmode} alt="" /></Button>
+                <Button onClick={() => { disptch(toggleTheme()) }} style={{ width: '50px', marginRight: '15px', backgroundColor: 'currentColor' }} ><img src={nightmode} alt="" /></Button>
 
                 {currentUser ? (
 
