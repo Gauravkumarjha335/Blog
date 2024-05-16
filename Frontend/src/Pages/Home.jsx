@@ -7,10 +7,7 @@ function Home() {
         <>
             <div style={{ display: 'flex', justifyContent: 'center' , alignItems : 'center' , height : '80vh' }} >
                 <h1>Gaurav&lsquo;s Blog</h1>
-
             </div>
-
-
         </>
     )
 }

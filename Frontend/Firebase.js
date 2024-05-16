@@ -6,7 +6,7 @@ import { initializeApp } from "firebase/app";
 // Your web app's Firebase configuration
 // import dotenv from 'dotenv';
 // dotenv.config();
-// console.log(import.meta.env.VITE_FIREBASE_API_KEY)
+console.log(import.meta.env.VITE_FIREBASE_API_KEY)
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
   authDomain: "blog-25cc3.firebaseapp.com",

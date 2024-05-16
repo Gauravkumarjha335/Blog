@@ -18,10 +18,9 @@ const userschema = new mongoose.Schema({
         require: [true, "Please Provide a Password"],
     },
 
-
     profilePicture : {
         type : String ,
-        default : "https://t4.ftcdn.net/jpg/00/64/67/27/360_F_64672736_U5kpdGs9keUll8CRQ3p3YaEv2M6qkVY5.jpg",
+        // default : "https://t4.ftcdn.net/jpg/00/64/67/27/360_F_64672736_U5kpdGs9keUll8CRQ3p3YaEv2M6qkVY5.jpg",
     },
 
 

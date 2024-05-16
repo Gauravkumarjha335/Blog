@@ -5,20 +5,23 @@ import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { Profiler } from 'react';
-import nightmode from '../assets/nightmode.png'
-import { toggleTheme } from '../Redux/Thems/Themslice';
 // import Avator from 'react-icons'
 function IndexNavbar() {
-    
+
     const path = useLocation().pathname;
     const navigate = useNavigate();
-    const disptch = useDispatch();
     const { currentUser } = useSelector(state => state.user)
     // console.log(currentUser.email)
     // console.log(currentUser.profilePicture)
-    // console.log(currentUser)
+
+
+    const signout = () => {
+        navigate('/sign-in')
+    }
+
+    console.log(currentUser)
     return (
         <Navbar bg="dark" expand="lg" variant="dark">
             <Container fluid>
@@ -32,8 +35,10 @@ function IndexNavbar() {
                     <Link to='/' ><Nav className='ml-5' style={{ marginLeft: '30px' }} >Home</Nav></Link>
 
                     <Link to="/about"><Nav className='ml-5' >About</Nav></Link>
+                    <Link to="/post"><Nav className='ml-5' >Post</Nav></Link>
                     <Link to='contact'><Nav className='ml-5'>Contact</Nav>
                     </Link>
+
 
                     <Form className="d-flex ml-10">
                         <Form.Control
@@ -48,8 +53,6 @@ function IndexNavbar() {
                     </Form>
                 </Nav>
                 {/* <Form style={{ display: "flex", gap: '20px' }} > */}
-                <Button onClick={() => { disptch(toggleTheme()) }} style={{ width: '50px', marginRight: '15px', backgroundColor: 'currentColor' }} ><img src={nightmode} alt="" /></Button>
-
                 {currentUser ? (
 
                     <Dropdown
@@ -75,7 +78,8 @@ function IndexNavbar() {
                             </DropdownItem>
                             <DropdownDivider></DropdownDivider>
                             <DropdownItem>
-                                Sign Out
+                                <Link to={'/sign-in'}><Button  >
+                                    Sign Out</Button></Link>
                             </DropdownItem>
                         </Link>
                     </Dropdown>
