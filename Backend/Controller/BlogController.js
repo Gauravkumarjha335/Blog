@@ -1,4 +1,6 @@
 import Blog from "../Model/Blogmodel.js";
+import User from "../Model/Usermodel.js";
+import { errorHandler } from "../Utills/Error.js";
 
 export const blogcontroller = async (req, res) => {
 
@@ -7,10 +9,19 @@ export const blogcontroller = async (req, res) => {
     if (!title || !description || !image) {
         return res.status(400).json({ error: "All fields are required" });
     }
+   
 
     const newForm = new Blog({ title, description, image });
 
     try {
+        const validblog = await User.findOne({title});
+
+        if (!validblog) {
+         return res.json({
+            text : 'Tsi sis avald '
+         })
+        }
+
         await newForm.save();
         res.status(201).json({ message: 'Form data saved' });
     } catch (error) {

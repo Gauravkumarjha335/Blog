@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Container } from 'reactstrap';
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { signInStart, signInFailure, signInSuccess } from '../Redux/User/Userslice';
 const Blogfrom = () => {
   const [formdata, setFormData] = useState({})
@@ -11,7 +11,6 @@ const Blogfrom = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
     try {
       dispatch(signInStart());
       const res = await fetch('/api/auth/signin', {
@@ -20,12 +19,12 @@ const Blogfrom = () => {
         body: JSON.stringify(formdata),
       });
       const data = await res.json();
-     
+
       if (res.ok) {
         dispatch(signInSuccess(data));
       }
     } catch (error) {
-      dispatch(signInFailure(error.message));
+      console.log(error)
     }
   };
   return (
@@ -52,7 +51,6 @@ const Blogfrom = () => {
             placeholder="Your Email Address"
             type="email"
             tabIndex="2"
-
             name='email'
             value={formdata.email}
             onChange={handleChange}
@@ -65,9 +63,6 @@ const Blogfrom = () => {
               padding: '10px'
             }}
           />
-
-
-
           <textarea
             placeholder="description"
             name='description'
@@ -104,11 +99,8 @@ const Blogfrom = () => {
           >
             Submit
           </button>
-
         </form>
       </Container>
-
-
     </>
   );
 };
