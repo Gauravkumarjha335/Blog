@@ -1,7 +1,7 @@
 import { Container, Row, Col, Alert, Spinner } from 'reactstrap'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { useState } from 'react';
+import { useState   } from 'react';
 // import IndexNavbar from '../Components/IndexNavbar'
 import { Link, useNavigate } from 'react-router-dom';
 import QAuth from '../Components/QAuth';
@@ -34,13 +34,21 @@ function SignUp() {
       if (data.success === false) {
         return setErrorMessage(data.message);
       }
+
       setLoading(false);
       if (res.ok) {
         navigate('/sign-in');
       }
+<<<<<<< Updated upstream
+=======
+      // console.log(res)
+      alert("Data Sumited")
+      // setLoading(false);
+>>>>>>> Stashed changes
     } catch (error) {
       setErrorMessage(error.message);
       setLoading(false);
+      alert("data not submitted")
     }
   };
 
